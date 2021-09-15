@@ -16,10 +16,8 @@ router.get("/", async (req, res) => {
 // create new workout route
 router.post("/", async (req, res) => {
     try {
-
         const workoutData = await db.Workout.create(req.body);
         res.status(200).json(workoutData)
-        
     } catch (err) {
         res.status(500).json(err);
     }
@@ -27,9 +25,17 @@ router.post("/", async (req, res) => {
 
 
 // add exercises to workout route
-router.put("/:id", async (req,res) => {
+router.put("/:id", async (req, res) => {
     try {
-        res.status(200).json(req.body);
+        
+        console.log(req.body);
+
+        const workoutData = await db.Workout.updateOne(
+            { _id: req.params.id },
+            { $push: { exercises: req.body }}
+        );
+
+        res.status(200).json(workoutData);
     } catch (err) {
         res.status(500).json(err);
     }
