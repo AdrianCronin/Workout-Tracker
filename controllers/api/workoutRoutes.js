@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { Workout } = require('../../models');
 const db = require('../../models');
 
-// get last workouts
+// get all workouts
 router.get("/", async (req, res) => {
     try {
         const workoutData = await db.Workout.find({});
@@ -23,7 +23,6 @@ router.post("/", async (req, res) => {
     }
 });
 
-
 // add exercises to workout route
 router.put("/:id", async (req, res) => {
     try {
@@ -31,7 +30,6 @@ router.put("/:id", async (req, res) => {
             { _id: req.params.id },
             { $push: { exercises: req.body }}
         );
-
         res.status(200).json(workoutData);
     } catch (err) {
         res.status(500).json(err);
