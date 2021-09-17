@@ -6,7 +6,13 @@ const db = require('../../models');
 // get all workouts
 router.get("/", async (req, res) => {
     try {
-        const workoutData = await db.Workout.find({});
+        const workoutData = await db.Workout.aggregate([
+            {
+                $addFields: {
+                    totalDuration: { $sum: "$exercises.duration" }
+                },
+            }
+        ]);
         res.status(200).json(workoutData);
     } catch (err) {
         res.status(500).json(err);
@@ -28,7 +34,7 @@ router.put("/:id", async (req, res) => {
     try {
         const workoutData = await db.Workout.updateOne(
             { _id: req.params.id },
-            { $push: { exercises: req.body }}
+            { $push: { exercises: req.body } }
         );
         res.status(200).json(workoutData);
     } catch (err) {
@@ -36,10 +42,10 @@ router.put("/:id", async (req, res) => {
     }
 });
 
-// get past 7 workout
+// get past 7 workouts
 router.get("/range", async (req, res) => {
     try {
-        const workoutData = await db.Workout.find({}).sort({day: -1}).limit(7);
+        const workoutData = await db.Workout.find({}).sort({ day: -1 }).limit(7);
         res.status(200).json(workoutData);
     } catch (err) {
         res.status(500).json(err);
