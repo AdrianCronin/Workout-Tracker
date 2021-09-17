@@ -36,4 +36,14 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// get past 7 workout
+router.get("/range", async (req, res) => {
+    try {
+        const workoutData = await db.Workout.find({}).sort({day: -1}).limit(7);
+        res.status(200).json(workoutData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
