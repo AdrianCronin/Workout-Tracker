@@ -1,49 +1,57 @@
 # Workout-Tracker
 
-
+[Link to Deployed App](https://dashboard.heroku.com/apps/mighty-spire-96358)
 
 ## Description
 
-
-An app that allows users to create and track workouts. Users are able to log multiple exercises in a workout as well as the name, type, weight, sets, reps, and duration of each exercise. Users may pick between two types of exercises, 
-
+An app that allows users to create and track workouts. Users are able to log multiple exercises in a workout as well as the name, type, weight, sets, reps, and duration of each exercise. Users may pick between two types of exercises: Resistance and Cardio.  The Dashboard displays a graph with total weight lifted for each of the last seven exercises. It also displays a graph with the total duration of each of the last seven workouts.
 
 
 ## Table of Contents
 
-- [Installation](#installation)
 - [Usage](#usage)
-
-- [Contributing](#contributing)
-- [Tests](#tests)
+- [Technologies Used](#technologies-used)
 - [Questions](#questions)
-
-
-
-## Installation
-
-n/a
-
 
 
 ## Usage
 
-Click Start new workout to begin
+1. Visit the [Workout Tracker App](https://dashboard.heroku.com/apps/mighty-spire-96358)
+
+2. Click New Workout to start a workout
+
+Homepage view for new users:
+![New User Homepage](./assets/images/no-workouts.png)
 
 
+3. Select a workout type
+
+![Select workout type](./assets/images/select-type.jpg)
 
 
+4. Enter the workout details
+5. Press 'Complete' to add the exercise to the workout or
+    -    Press 'Add Exercise' to add the exercise to the workout and then enter the details for another exercise
 
-## Contributing
+![Enter workout details](./assets/images/add-exercise.png)
 
-n/a
+6. The app will return to the homepage and display the details for the last workout
+
+![Last Workout](./assets/images/last-workout.png)
+
+7. Click the 'Dashboard' button to see data for the last 7 workoutSeed
+
+![Dashboard page](./assets/images/dashboard.png)
 
 
+## Technologies Used
 
-## Tests
-
-n/a
-
+* Javascript
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose.js
+* Heroku
 
 
 ## Questions
